@@ -36,7 +36,7 @@
     "webpack": "^3.8.1"
   },
   "dependencies": {
-    "fbp-manifest": "^0.1.14",
+    "fbp-manifest": "^0.2.0",
     "loader-utils": "^1.1.0"
   }
 }
