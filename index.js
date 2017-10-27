@@ -28,9 +28,6 @@ function generateLoader() {
   discover(options)
     .then(modules => serialize(modules, options))
     .then((loader) => {
-      console.log('----LOADER---');
-      console.log(loader);
-      console.log('----LOADER---');
       callback(null, loader);
     })
     .catch((err) => {
