@@ -1,4 +1,4 @@
-NoFlo Component Loader generator [![Build Status](https://travis-ci.org/noflo/noflo-component-loader.svg?branch=master)](https://travis-ci.org/noflo/noflo-component-loader)
+NoFlo Component Loader generator [![Build Status](https://travis-ci.org/noflo/noflo-component-loader.svg?branch=master)](https://travis-ci.org/noflo/noflo-component-loader) [![Greenkeeper badge](https://badges.greenkeeper.io/noflo/noflo-component-loader.svg)](https://greenkeeper.io/)
 ================================
 
 This utility can be used for generating statically configured NoFlo component loaders when building NoFlo with a module bundler like [WebPack](https://webpack.js.org/).
