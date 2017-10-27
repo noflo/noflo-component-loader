@@ -6,7 +6,7 @@
   "scripts": {
     "test": "npm run lint && npm run spec",
     "lint": "eslint lib/*.js index.js",
-    "spec": "nyc mocha --reporter spec spec/*.js"
+    "spec": "mocha --reporter spec spec/*.js"
   },
   "repository": {
     "type": "git",
@@ -32,14 +32,7 @@
     "mocha": "^4.0.1",
     "noflo": "^0.8.6",
     "noflo-core": "^0.4.1",
-    "nyc": "^11.2.1",
     "webpack": "^3.8.1"
-  },
-  "nyc": {
-    "include": [
-      "lib/*.js",
-      "*.js"
-    ]
   },
   "dependencies": {
     "fbp-manifest": "^0.1.14",
