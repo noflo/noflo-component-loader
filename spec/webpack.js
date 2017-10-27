@@ -43,4 +43,19 @@ describe('Webpack build of example project', () => {
       done();
     });
   });
+  it('should have core/RepeatAsync available', (done) => {
+    const loader = new bundle.ComponentLoader();
+    loader.load('core/RepeatAsync', (err, inst) => {
+      if (err) return done(err);
+      expect(inst).to.be.an('object');
+      done();
+    });
+  });
+  it('should not have core/Repeat available', (done) => {
+    const loader = new bundle.ComponentLoader();
+    loader.load('core/Repeat', (err, inst) => {
+      expect(err).to.be.an('error');
+      done();
+    });
+  });
 });

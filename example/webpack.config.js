@@ -17,11 +17,16 @@ module.exports = {
         use: ['fbp-loader'],
       },
       {
+        // Replace NoFlo's dynamic loader with a generated one
         test: /noflo\/lib\/loader\/register.js$/,
         use: [
           {
             loader: 'noflo-component-loader',
-            options: {},
+            options: {
+              // Only include components used by this graph
+              // Set to NULL if you want all installed components
+              graph: 'component-loader-example/InvertAsync'
+            },
           },
         ],
       },
