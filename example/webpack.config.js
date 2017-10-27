@@ -1,9 +1,10 @@
 module.exports = {
-  target: 'node',
   entry: './index.js',
+  target: 'node',
   output: {
     path: __dirname,
     filename: 'example.bundle.js',
+    libraryTarget: 'commonjs',
   },
   module: {
     rules: [
