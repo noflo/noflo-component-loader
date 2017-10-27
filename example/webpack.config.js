@@ -25,7 +25,10 @@ module.exports = {
             options: {
               // Only include components used by this graph
               // Set to NULL if you want all installed components
-              graph: 'component-loader-example/InvertAsync'
+              graph: 'component-loader-example/InvertAsync',
+              // Whether to include the original component sources
+              // in the build
+              debug: true,
             },
           },
         ],
