@@ -23,6 +23,9 @@ function generateLoader() {
       recursive: true,
     };
   }
+  if (!options.runtimes) {
+    options.runtimes = options.manifest.runtimes;
+  }
   this.cacheable();
   const callback = this.async();
   discover(options)
