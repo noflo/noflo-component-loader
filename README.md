@@ -23,7 +23,7 @@ Then configure WebPack to replace NoFlo's dynamic component loader with a genera
       options: {
         // Only include components used by this graph
         // Set to NULL if you want all installed components
-        graph: 'component-loader-example/InvertAsync',
+        graph: 'myproject/GraphName',
         // Whether to include the original component sources
         // in the build
         debug: false,
