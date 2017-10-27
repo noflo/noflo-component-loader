@@ -1,0 +1,48 @@
+{
+  "name": "noflo-component-loader",
+  "version": "0.1.0",
+  "description": "NoFlo Component Loader generator for WebPack and other module bundlers",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm run lint && npm run spec",
+    "lint": "eslint lib/*.js index.js",
+    "spec": "nyc mocha --reporter spec spec/*.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/noflo/noflo-component-loader.git"
+  },
+  "keywords": [
+    "noflo",
+    "loader"
+  ],
+  "author": "Henri Bergius <henri.bergius@iki.fi>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/noflo/noflo-component-loader/issues"
+  },
+  "homepage": "https://github.com/noflo/noflo-component-loader#readme",
+  "devDependencies": {
+    "chai": "^4.1.2",
+    "coffee-loader": "^0.7.2",
+    "eslint": "^4.9.0",
+    "eslint-config-airbnb-base": "^12.1.0",
+    "eslint-plugin-import": "^2.8.0",
+    "fbp-loader": "^0.1.2",
+    "mocha": "^4.0.1",
+    "noflo": "^0.8.6",
+    "noflo-core": "^0.4.1",
+    "nyc": "^11.2.1",
+    "webpack": "^3.8.1"
+  },
+  "nyc": {
+    "include": [
+      "lib/*.js",
+      "*.js"
+    ]
+  },
+  "dependencies": {
+    "fbp-manifest": "^0.1.14",
+    "loader-utils": "^1.1.0"
+  }
+}

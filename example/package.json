@@ -1,0 +1,29 @@
+{
+  "name": "noflo-component-loader-example",
+  "version": "0.1.0",
+  "description": "Example project for using noflo-component-loader with WebPack",
+  "main": "index.js",
+  "scripts": {
+    "build": "webpack"
+  },
+  "license": "MIT",
+  "homepage": "https://github.com/noflo/noflo-component-loader#readme",
+  "devDependencies": {
+    "coffee-loader": "^0.7.2",
+    "fbp-loader": "^0.1.2",
+    "webpack": "^3.8.1"
+  },
+  "nyc": {
+    "include": [
+      "lib/*.js",
+      "*.js"
+    ]
+  },
+  "noflo": {
+    "icon": "bug"
+  },
+  "dependencies": {
+    "noflo": "^0.8.6",
+    "noflo-core": "^0.4.1"
+  }
+}
