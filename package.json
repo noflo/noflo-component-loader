@@ -32,7 +32,7 @@
     "fbp-loader": "^0.1.2",
     "mocha": "^4.0.1",
     "noflo": "^0.8.6",
-    "noflo-core": "^0.4.1",
+    "noflo-core": "^0.5.0",
     "webpack": "^3.8.1"
   },
   "dependencies": {
