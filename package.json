@@ -31,7 +31,7 @@
     "eslint-plugin-import": "^2.8.0",
     "fbp-loader": "^0.1.2",
     "mocha": "^4.0.1",
-    "noflo": "^0.8.6",
+    "noflo": "^1.0.0",
     "noflo-core": "^0.5.0",
     "webpack": "^3.8.1"
   },
