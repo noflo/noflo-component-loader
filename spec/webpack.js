@@ -74,46 +74,112 @@ describe('Webpack build of example project', () => {
   });
   describe('setting sources', () => {
     let loader = null;
-    const source = `
-const noflo = require('noflo');
-exports.getComponent = () => {
-  const c = new noflo.Component();
-  c.inPorts.add('in');
-  c.outPorts.add('out');
-  c.process((input, output) => {
-    output.sendDone(input.getData() + 2);
-  });
-  return c;
-};`
     before(() => {
       loader = new bundle.ComponentLoader();
     });
-    it('should be able to write sources for elementary component', (done) => {
-      loader.setSource('bar', 'Plusser', source, 'javascript', done);
+    describe('with a working component', () => {
+      const source = `
+  const noflo = require('noflo');
+  exports.getComponent = () => {
+    const c = new noflo.Component();
+    c.inPorts.add('in');
+    c.outPorts.add('out');
+    c.process((input, output) => {
+      output.sendDone(input.getData() + 2);
     });
-    it('should produce a runnable component', (done) => {
-      loader.load('bar/Plusser', function (err, c) {
-        if (err) return done(err);
-        const ins = bundle.internalSocket.createSocket();
-        const out = bundle.internalSocket.createSocket();
-        c.inPorts.in.attach(ins);
-        c.outPorts.out.attach(out);
-        out.on('data', function (data) {
-          expect(data).to.equal(3);
-          c.outPorts.out.detach(out);
+    return c;
+  };`
+      it('should be able to write sources for elementary component', (done) => {
+        loader.setSource('bar', 'Plusser', source, 'javascript', done);
+      });
+      it('should produce a runnable component', (done) => {
+        loader.load('bar/Plusser', function (err, c) {
+          if (err) return done(err);
+          const ins = bundle.internalSocket.createSocket();
+          const out = bundle.internalSocket.createSocket();
+          c.inPorts.in.attach(ins);
+          c.outPorts.out.attach(out);
+          out.on('data', function (data) {
+            expect(data).to.equal(3);
+            c.outPorts.out.detach(out);
+            done();
+          });
+          ins.send(1);
+        });
+      });
+      it('should be able to read sources for the registered component', (done) => {
+        loader.getSource('bar/Plusser', function (err, c) {
+          if (err) return done(err);
+          expect(c.library).to.equal('bar');
+          expect(c.name).to.equal('Plusser');
+          expect(c.language).to.equal('javascript');
+          expect(c.code).to.equal(source);
           done();
         });
-        ins.send(1);
       });
     });
-    it('should be able to read sources for the registered component', (done) => {
-      loader.getSource('bar/Plusser', function (err, c) {
-        if (err) return done(err);
-        expect(c.library).to.equal('bar');
-        expect(c.name).to.equal('Plusser');
-        expect(c.language).to.equal('javascript');
-        expect(c.code).to.equal(source);
-        done();
+    describe('with a component with faulty requires', () => {
+      const source = `
+  const noflo = require('noflo');
+  const foo = require('./not-existing');
+  exports.getComponent = () => {
+    const c = new noflo.Component();
+    c.inPorts.add('in');
+    c.outPorts.add('out');
+    c.process((input, output) => {
+      output.sendDone(input.getData() + 2);
+    });
+    return c;
+  };`
+      it('should be not able to write sources for elementary component', (done) => {
+        loader.setSource('bar', 'FailRequire', source, 'javascript', (err) => {
+          expect(err).to.be.an('error');
+          done();
+        });
+      });
+      it('should not produce a runnable component', (done) => {
+        loader.load('bar/FailRequire', function (err, c) {
+          expect(err).to.be.an('error');
+          done();
+        });
+      });
+      it('should be not able to read sources for the registered component', (done) => {
+        loader.getSource('bar/FailRequire', function (err, c) {
+          expect(err).to.be.an('error');
+          done();
+        });
+      });
+    });
+    describe('with a component that doesn\'t export itself', () => {
+      const source = `
+  const noflo = require('noflo');
+  const getComponent = () => {
+    const c = new noflo.Component();
+    c.inPorts.add('in');
+    c.outPorts.add('out');
+    c.process((input, output) => {
+      output.sendDone(input.getData() + 2);
+    });
+    return c;
+  };`
+      it('should be not able to write sources for elementary component', (done) => {
+        loader.setSource('bar', 'FailExport', source, 'javascript', (err) => {
+          expect(err).to.be.an('error');
+          expect(err.message).to.contain('failed to create a runnable component');
+          done();
+        });
+      });
+      it('should not produce a runnable component', (done) => {
+        loader.load('bar/FailExport', function (err, c) {
+          expect(err).to.be.an('error');
+          done();
+        });
+      });
+      it('should be not able to read sources for the registered component', (done) => {
+        loader.getSource('bar/FailExport', function (err, c) {
+          expect(err).to.be.an('error');
+          done();
+        });
       });
     });
   });
