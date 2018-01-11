@@ -36,3 +36,8 @@ Then configure WebPack to replace NoFlo's dynamic component loader with a genera
 **Note:** If you need to support building on Windows, the `test` above must be adapted to the `\` path separator. Use `([\\]+|\/)` instead of `\/`.
 
 For a more complete example, see the `example/` folder.
+
+## Changes
+
+* 0.3.0 (Jan 11 2018)
+  - Try to run ES6 components directly without transpiling if Babel is not available. Most platforms support it now
