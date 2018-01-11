@@ -90,7 +90,7 @@ describe('Webpack build of example project', () => {
     return c;
   };`
       it('should be able to write sources for elementary component', (done) => {
-        loader.setSource('bar', 'Plusser', source, 'javascript', done);
+        loader.setSource('bar', 'Plusser', source, 'es2015', done);
       });
       it('should produce a runnable component', (done) => {
         loader.load('bar/Plusser', function (err, c) {
@@ -112,7 +112,7 @@ describe('Webpack build of example project', () => {
           if (err) return done(err);
           expect(c.library).to.equal('bar');
           expect(c.name).to.equal('Plusser');
-          expect(c.language).to.equal('javascript');
+          expect(c.language).to.equal('es2015');
           expect(c.code).to.equal(source);
           done();
         });
