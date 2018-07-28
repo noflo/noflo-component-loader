@@ -39,5 +39,7 @@ For a more complete example, see the `example/` folder.
 
 ## Changes
 
+* 0.3.1 (Jul 28 2018)
+  - `setSource` failures now provide more verbose errors including the component library and name
 * 0.3.0 (Jan 11 2018)
   - Try to run ES6 components directly without transpiling if Babel is not available. Most platforms support it now
