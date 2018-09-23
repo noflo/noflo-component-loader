@@ -1,6 +1,6 @@
 {
   "name": "noflo-component-loader",
-  "version": "0.3.1",
+  "version": "0.3.2",
   "description": "NoFlo Component Loader generator for WebPack and other module bundlers",
   "main": "index.js",
   "scripts": {
