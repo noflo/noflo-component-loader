@@ -39,6 +39,8 @@ For a more complete example, see the `example/` folder.
 
 ## Changes
 
+* 0.3.2 (git master)
+  - Fixed `getSource` handling of components without a library prefix
 * 0.3.1 (Jul 28 2018)
   - `setSource` failures now provide more verbose errors including the component library and name
 * 0.3.0 (Jan 11 2018)
