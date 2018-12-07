@@ -60,13 +60,13 @@ describe('Webpack build of example project', () => {
     });
   });
   it('should return original sources with getSource', (done) => {
-    const sourcePath = path.resolve(__dirname, '../node_modules/noflo-core/components/RepeatAsync.coffee');
+    const sourcePath = path.resolve(__dirname, '../node_modules/noflo-core/components/RepeatAsync.js');
     const loader = new bundle.ComponentLoader();
     fs.readFile(sourcePath, 'utf-8', (err, original) => {
       if (err) return done(err);
       loader.getSource('core/RepeatAsync', (err, loaded) => {
         if (err) return done(err);
-        expect(loaded.language).to.equal('coffeescript');
+        expect(loaded.language).to.equal('javascript');
         expect(loaded.code).to.equal(original);
         done();
       });
