@@ -33,7 +33,7 @@
     "mocha": "^6.0.0",
     "noflo": "^1.0.0",
     "noflo-core": "^0.6.0",
-    "webpack": "^4.0.0",
+    "webpack": "^4.42.1",
     "webpack-cli": "^3.0.0"
   },
   "dependencies": {
