@@ -29,7 +29,7 @@ function generateLoader() {
   this.cacheable();
   const callback = this.async();
   discover(options)
-    .then(modules => serialize(modules, options))
+    .then((modules) => serialize(modules, options))
     .then((loader) => {
       callback(null, loader);
     })
