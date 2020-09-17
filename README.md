@@ -39,6 +39,8 @@ For a more complete example, see the `example/` folder.
 
 ## Changes
 
+* 0.3.3 (Sep 17 2020)
+  - Added support for the new `getLanguages()` component loader method
 * 0.3.2 (Sep 23 2018)
   - Fixed `getSource` handling of components without a library prefix
 * 0.3.1 (Jul 28 2018)
