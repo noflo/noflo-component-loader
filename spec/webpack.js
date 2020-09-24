@@ -31,7 +31,15 @@ describe('Webpack build of example project', () => {
   it('should be possible to build', (done) => {
     exec('npm run build', {
       cwd: examplePath,
-    }, done);
+    }, (err, stdout, stderr) => {
+      if (err) {
+        console.error(stderr);
+        done(err);
+        return;
+      }
+      console.log(stdout);
+      done();
+    });
   }).timeout(60000);
   it('should produce a loadable module', () => {
     bundle = require('../example/example.bundle.js');
