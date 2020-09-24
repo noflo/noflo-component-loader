@@ -39,6 +39,8 @@ For a more complete example, see the `example/` folder.
 
 ## Changes
 
+* 0.3.5 (Sep 24 2020)
+  - Fixed a bug with the `getLanguages` method
 * 0.3.4 (Sep 24 2020)
   - Component specs are now included in the bundle when the `debug` option is enabled
 * 0.3.3 (Sep 17 2020)
