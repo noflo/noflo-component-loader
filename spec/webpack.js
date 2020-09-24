@@ -52,32 +52,44 @@ describe('Webpack build of example project', () => {
       done();
     });
   });
-  it('should have core/RepeatAsync available', (done) => {
+  it('should have core/RepeatDelayed available', (done) => {
     const loader = new bundle.ComponentLoader();
-    loader.load('core/RepeatAsync', (err, inst) => {
+    loader.load('core/RepeatDelayed', (err, inst) => {
       if (err) return done(err);
       expect(inst).to.be.an('object');
       done();
     });
   });
-  it('should not have core/Repeat available', (done) => {
-    const loader = new bundle.ComponentLoader();
-    loader.load('core/Repeat', (err, inst) => {
-      expect(err).to.be.an('error');
-      done();
-    });
-  });
-  it('should return original sources with getSource', (done) => {
-    const sourcePath = path.resolve(__dirname, '../node_modules/noflo-core/components/RepeatAsync.js');
+  it('should return original core/RepeatDelayed sources with getSource', (done) => {
+    const sourcePath = path.resolve(__dirname, '../node_modules/noflo-core/components/RepeatDelayed.js');
     const loader = new bundle.ComponentLoader();
     fs.readFile(sourcePath, 'utf-8', (err, original) => {
       if (err) return done(err);
-      loader.getSource('core/RepeatAsync', (err, loaded) => {
+      loader.getSource('core/RepeatDelayed', (err, loaded) => {
         if (err) return done(err);
         expect(loaded.language).to.equal('javascript');
         expect(loaded.code).to.equal(original);
         done();
       });
+    });
+  });
+  it('should return original core/RepeatDelayed specs with getSource', (done) => {
+    const sourcePath = path.resolve(__dirname, '../node_modules/noflo-core/spec/RepeatDelayed.yaml');
+    const loader = new bundle.ComponentLoader();
+    fs.readFile(sourcePath, 'utf-8', (err, original) => {
+      if (err) return done(err);
+      loader.getSource('core/RepeatDelayed', (err, loaded) => {
+        if (err) return done(err);
+        expect(loaded.tests).to.equal(original);
+        done();
+      });
+    });
+  });
+  it('should not have core/RepeatAsync available', (done) => {
+    const loader = new bundle.ComponentLoader();
+    loader.load('core/RepeatAsync', (err, inst) => {
+      expect(err).to.be.an('error');
+      done();
     });
   });
   describe('setting sources', () => {
