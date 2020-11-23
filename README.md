@@ -39,6 +39,8 @@ For a more complete example, see the `example/` folder.
 
 ## Changes
 
+* 0.4.0 (Nov 23 2020)
+  - The generated code is now ES6
 * 0.3.5 (Sep 24 2020)
   - Fixed a bug with the `getLanguages` method
 * 0.3.4 (Sep 24 2020)
