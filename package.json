@@ -27,7 +27,7 @@
     "chai": "^4.1.2",
     "coffee-loader": "^2.0.0",
     "coffeescript": "^2.0.2",
-    "eslint": "^7.9.0",
+    "eslint": "^8.26.0",
     "eslint-config-airbnb-base": "^14.1.0",
     "eslint-plugin-import": "^2.8.0",
     "fbp-loader": "^0.1.2",
